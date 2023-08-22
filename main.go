@@ -8,7 +8,7 @@ type Node struct {
 	Right *Node
 }
 
-//Insert
+// Insert
 func (n *Node) Insert(k int) {
 
 	if n.Key < k {
@@ -29,18 +29,25 @@ func (n *Node) Insert(k int) {
 
 }
 
-//Serch
+// Serch
 func (n *Node) Search(k int) bool {
+	count++
+	fmt.Printf("searching : %d , reps :: %d\n", k, count)
+	fmt.Printf("current node is :: %+v\n", n)
+	fmt.Println("===================")
 	if n == nil {
 		return false
 	}
 	if n.Key < k {
 		return n.Right.Search(k)
-	}else if n.Key > k {
+	} else if n.Key > k {
 		return n.Left.Search(k)
 	}
 	return true
 }
+
+var count int
+
 func main() {
 	fmt.Println("BinarySearchTree...")
 	tree := &Node{Key: 100}
@@ -52,6 +59,7 @@ func main() {
 	tree.Insert(70)
 	tree.Insert(20)
 	fmt.Println(tree)
-	fmt.Println(tree.Search(60))
+	fmt.Println(tree.Search(40))
+	fmt.Println(count)
 
 }
